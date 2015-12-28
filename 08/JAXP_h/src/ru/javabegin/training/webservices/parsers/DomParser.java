@@ -2,6 +2,7 @@ package ru.javabegin.training.webservices.parsers;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,6 +35,9 @@ public class DomParser {
         try {
 
             DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            
+//            InputStream is = this.getClass().getClassLoader().getResourceAsStream(xmlPath);
+//            doc = dBuilder.parse(is);
             doc = dBuilder.parse(new File(xmlPath));
 
             System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
@@ -43,7 +47,8 @@ public class DomParser {
             }
 
 
-            saveXML("c:\\test\\addDate.xml");
+            saveXML("addDate.xml");
+//            saveXML("c:\\test\\addDate.xml");
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
